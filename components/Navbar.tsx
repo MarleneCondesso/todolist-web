@@ -1,8 +1,7 @@
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { FC, useCallback, useEffect, useState } from "react";
 import NavbarMobile from "./NavbarMobile";
-import { BsFillMoonFill } from "react-icons/Bs";
-import {BsFillSunFill } from "react-icons/Bs";
+import {BsFillMoonFill, BsFillSunFill } from "react-icons/Bs";
 import { MdDesktopWindows } from "react-icons/md";
 import { IoIosArrowDown } from 'react-icons/io';
 import NavbarProfile from "./NavbarProfile";
