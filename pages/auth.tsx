@@ -123,11 +123,11 @@ const Auth = () => {
                 gap-4`}
                 >
                     <button onClick={() => { setTheme('light'); }}>
-                        <HiMoon size={20} />
+                        <HiSun size={20} />
                     </button>
                     <button onClick={() => { setTheme('dark'); }} className={`${theme === 'dark' ? 'text-teal-500' : 'text-white'} dark:hover:text-teal-500 hover:text-teal-900 cursor-pointer`}
                     >
-                        <HiSun size={18} />
+                        <HiMoon size={18} />
                     </button>
                     <button onClick={() => { setTheme('system'); }}
                         className={`
