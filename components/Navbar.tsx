@@ -91,7 +91,6 @@ const Navbar: FC<NavbarProps> = ({ onTheme }) => {
                 document.documentElement.classList.remove('dark');
             }
         }
-
     }
 
     useEffect(() => {
@@ -112,14 +111,9 @@ const Navbar: FC<NavbarProps> = ({ onTheme }) => {
 
     }, [theme]);
 
-
-
     const toggleMenuProfile = useCallback(() => {
         setShowMenuProfile((currentVariant) => !currentVariant);
     }, []);
-
-
-
 
     return (
         <>
