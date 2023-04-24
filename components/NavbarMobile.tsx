@@ -151,23 +151,22 @@ const NavbarMobile: FC<NavbarMobileProps> = ({
                     <img src={currentUser?.image} className="w-16 self-center" alt="profile-image"/>
                     <h2 className="text-slate-700
                         dark:lg:text-teal-200
-                        dark:text-teal-400
+                        dark:text-white
                         items-center 
                         justify-center 
                         flex 
                         lg:px-0 
                         font-semibold 
-                        cursor-pointer 
                         transition-shadow
-                        lg:z-[1]`}>"
+                        lg:z-[1]
+                        text-3xl"
                     >
                         {currentUser?.name}
                     </h2>
-                    <div className="items-center justify-center w-full flex flex-col">
+                    <div className="items-center justify-center w-full flex flex-col text-slate-700 dark:text-teal-400 font-semibold">
                         <p>Change profile image</p> 
                         <input className="cursor-pointer w-60 mb-5 text-xs text-white border border-white rounded-lg bg-slate-700 dark:text-teal-400 focus:outline-none dark:bg-gray-700 dark:border-teal-400 dark:placeholder-teal-400 placeholder-slate-700" accept={"image/*"} id="small_size" onChange={onFileResize} type="file"/>
                     </div>
-                    <NavbarItem to="#" label="Delete Account" onClick={toggleMobileMenu} />
                     <NavbarItem to="#" label="Sign Out" onClick={()=> signOut()} />
                     <div className={`
                             lg:hidden
