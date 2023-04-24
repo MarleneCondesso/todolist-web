@@ -1,8 +1,8 @@
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { FC, useCallback, useEffect, useState } from "react";
 import NavbarMobile from "./NavbarMobile";
-import {BsFillSunFill } from "react-icons/Bs";
-import {BsFillMoonFill } from "react-icons/Bs";
+import {HiSun } from "react-icons/hi";
+import { HiMoon } from "react-icons/hi";
 import { MdDesktopWindows } from "react-icons/md";
 import { IoIosArrowDown } from 'react-icons/io';
 import NavbarProfile from "./NavbarProfile";
@@ -151,12 +151,12 @@ const Navbar: FC<NavbarProps> = ({ onTheme }) => {
                     gap-4`}
                     >
                         <button onClick={() => { setTheme('light'); onTheme('light'); }}>
-                            <BsFillSunFill size={20} />
+                            <HiSun size={20} />
                         </button>
                         <button onClick={() => { setTheme('dark'); onTheme('dark'); }}
                             className={`${theme === 'dark' ? 'text-teal-500' : 'text-white'} dark:hover:text-teal-500 hover:text-teal-900 cursor-pointer`}
                         >
-                            <BsFillMoonFill size={18} />
+                            <HiMoon size={18} />
                         </button>
                         <button onClick={() => { setTheme('system'); onTheme('system'); }}
                             className={`
