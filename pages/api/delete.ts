@@ -29,18 +29,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
             const tasks = await prismadb.task.findMany();
 
-            const updateTasks = without(tasks, existingTask); 
-
-
-            const upadateTaskList = await prismadb.task.delete({
-                where: {
-                    id: taskId,
-                },
-            });
-
-
-
-            
+            without(tasks, existingTask); 
+           
 
             const updateTaskIdsUser = without(currentUser.taskIds, taskId); 
 

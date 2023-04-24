@@ -1,10 +1,6 @@
-import Input from "@/components/Task/Input";
-import Item from "@/components/Task/Item";
 import { NextPageContext } from "next";
-import { getSession, signOut } from "next-auth/react";
-import { useCallback, useEffect, useState } from "react";
-import register from "./api/register";
-import { Task, TaskDTO, TaskService } from "@/services/TaskService";
+import { getSession } from "next-auth/react";
+import { useCallback, useState } from "react";
 import TaskList from "@/components/Task/TaskList";
 import axios from "axios";
 import useCurrentUser from "@/hooks/useCurrentUser";
@@ -33,14 +29,9 @@ export default function Home() {
 
   const [input, setInput] = useState('');
 
-  //const [ tasksUsers, setTasksUser ] = useState<Task[]>([]);
-
-
   const { data: taskListOpen = [] } = useTask();
   const { data: taskListClosed = [] } = useTaskListClosed();
 
-  // const taskListOpen: Task[] = [{id: "1",text: '', state: false}];
-  // const taskListClosed: Task[] = [{id: "2", text: '', state: true}];
 
   const { mutate: mutateTasks } = useTask();
   const { data: currentUser, mutate } = useCurrentUser();

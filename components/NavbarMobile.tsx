@@ -151,7 +151,7 @@ const NavbarMobile: FC<NavbarMobileProps> = ({
 
                     <IoClose size={36} className="cursor-pointer text-gray-600 dark:text-teal-400" onClick={toggleMobileMenu} />
 
-                    <img src={currentUser?.image} className="w-16 self-center" />
+                    <img src={currentUser?.image} className="w-16 self-center" alt="profile-image"/>
                     <h2 className="text-slate-700
                         dark:lg:text-teal-200
                         dark:text-teal-400
