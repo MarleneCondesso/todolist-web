@@ -3,8 +3,8 @@ import { useCallback, useEffect, useState } from "react";
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
 import { useRouter } from "next/router";
-
-import { BsFillMoonFill, BsFillSunFill } from "react-icons/Bs";
+import {HiSun } from "react-icons/hi";
+import { HiMoon } from "react-icons/hi";
 import { MdDesktopWindows } from "react-icons/md";
 
 const images = [
@@ -123,11 +123,11 @@ const Auth = () => {
                 gap-4`}
                 >
                     <button onClick={() => { setTheme('light'); }}>
-                        <BsFillSunFill size={20} />
+                        <HiMoon size={20} />
                     </button>
                     <button onClick={() => { setTheme('dark'); }} className={`${theme === 'dark' ? 'text-teal-500' : 'text-white'} dark:hover:text-teal-500 hover:text-teal-900 cursor-pointer`}
                     >
-                        <BsFillMoonFill size={18} />
+                        <HiSun size={18} />
                     </button>
                     <button onClick={() => { setTheme('system'); }}
                         className={`
