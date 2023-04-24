@@ -2,10 +2,9 @@ import { IoClose } from "react-icons/Io5";
 import NavbarItem from "./NavbarItem";
 import { FC, useCallback, useEffect, useState } from "react";
 import { FiMenu } from "react-icons/fi";
-import { AiOutlineDownload } from "react-icons/ai";
 import { MdDesktopWindows } from "react-icons/md";
-import { BsFillSunFill, BsFillMoonFill } from "react-icons/Bs";
-import { IoIosArrowDown } from "react-icons/io";
+import { BsFillSunFill } from "react-icons/Bs";
+import { BsFillMoonFill } from "react-icons/Bs";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import axios from "axios";
 import { signOut } from "next-auth/react";
@@ -28,9 +27,7 @@ const NavbarMobile: FC<NavbarMobileProps> = ({
 
     const [variantMobileMenuContent, setVariantMobileMenuContent] = useState(false);
 
-    //Change profile Image
-    // const [file, setFile] = useState<any>(null);
-    // const [fileDataURL, setFileDataURL] = useState<FileReader | null>(null);
+
     const { data: currentUser, mutate } = useCurrentUser();
 
 
@@ -77,7 +74,7 @@ const NavbarMobile: FC<NavbarMobileProps> = ({
 
         let image = e.toString();
 
-        let response = await axios.put('/api/putImage', { image });
+        let response = await axios.put('/api/task/putImage', { image });
 
         mutate({
             ...currentUser,

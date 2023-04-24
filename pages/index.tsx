@@ -45,7 +45,7 @@ export default function Home() {
     let state = false;
     let text = input;
     setInput('');
-    let response = await axios.post('/api/post', { text, state });;
+    let response = await axios.post('/api/task/post', { text, state });;
     const updateTaskIds = response?.data?.taskIds;
 
     mutate({

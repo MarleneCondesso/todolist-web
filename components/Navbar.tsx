@@ -138,7 +138,7 @@ const Navbar: FC<NavbarProps> = ({ onTheme }) => {
             >
                 <p className="text-slate-500 dark:text-teal-200 w-full p-3 text-xl font-semibold hidden lg:flex"> TO DO LIST</p>
                 <NavbarMobile theme={theme || ''} setTheme={(res) => setTheme(res)} showBackground={showBackground} onClick={() => { }} />
-                <div className="flex flex-row justify-end w-full">
+                <div className="flex flex-row justify-end w-full my-10 p-2">
                     <div className={`
                     hidden
                     lg:flex
@@ -147,7 +147,7 @@ const Navbar: FC<NavbarProps> = ({ onTheme }) => {
                     max-lg:top-5
                     max-lg:right-20
                     self-center
-                    max-h-10
+                    max-h-28
                     p-2
                     dark:bg-teal-800
                     dark:bg-opacity-60
@@ -170,25 +170,10 @@ const Navbar: FC<NavbarProps> = ({ onTheme }) => {
                         >
                             <MdDesktopWindows size={20} />
                         </button>
-                    </div>
-                    <div onClick={toggleMenuProfile} className={`
-                    lg:flex
-                    hidden
-                    px-4
-                    lg:h-[5%]
-                    rounded-md
-                    items-center
-                    gap-2
-                    transition
-                    duration-75
-                    cursor-pointer
-                    flex-row
-                    font-semibold`}
-                    >
-                            <img src={currentUser?.image} className="w-16" />
-                            <IoIosArrowDown size={30} className={`${showMenuProfile && 'rotate-180'} ${theme === 'dark' ? 'text-teal-400' : 'text-slate-700'}`} />
-                        
-                       
+                        <div className="flex flex-row items-center gap-3 cursor-pointer transition duration-700" onClick={toggleMenuProfile}>
+                        <img src={currentUser?.image} className="w-16" alt="profile-image"/>
+                        <IoIosArrowDown size={30} className={`${showMenuProfile && 'rotate-180'} ${theme === 'dark' ? 'text-teal-400' : 'text-slate-700'}`} />
+                        </div>
                     </div>
                     {showMenuProfile && <NavbarProfile/>}
                 </div>

@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import fetcher from '@/lib/fetcher';
 
 const useTaskListClosed = () => {
-    const { data, error, isLoading, mutate } = useSWR('/api/tasksClosed', fetcher, {
+    const { data, error, isLoading, mutate } = useSWR('/api/task/tasksClosed', fetcher, {
         revalidateIfStale: false,
         revalidateOnFocus: false,
         revalidateOnReconnect: false,

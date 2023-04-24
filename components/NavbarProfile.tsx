@@ -16,7 +16,7 @@ const NavbarProfile = () => {
 
     let image = e.toString();
 
-    let response = await axios.put('/api/putImage', { image });
+    let response = await axios.put('/api/task/putImage', { image });
 
     mutate({
         ...currentUser,

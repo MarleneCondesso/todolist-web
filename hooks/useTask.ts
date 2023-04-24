@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import fetcher from '@/lib/fetcher';
 
 const useTask = () => {
-    const { data, error, isLoading, mutate } = useSWR('/api/tasks', fetcher, {
+    const { data, error, isLoading, mutate } = useSWR('/api/task/tasks', fetcher, {
         revalidateIfStale: false,
         revalidateOnFocus: false,
         revalidateOnReconnect: false,

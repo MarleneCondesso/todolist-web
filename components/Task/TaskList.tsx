@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo, useState } from "react";
+import { FC } from "react";
 import Item from "./Item";
 
 
@@ -37,7 +37,7 @@ const TaskList: FC<TaskListProps> = ({ data, openTasks }) => {
           <div className="w-full h-full dark:bg-slate-500 bg-slate-400 shadow-xl bg-opacity-80 p-12 rounded-2xl">
             <div className="flex flex-col items-center justify-center p-10">
               <h1 className="dark:text-white text-slate-700 font-semibold text-4xl">THIS IS YOUR TASKS LIST</h1>
-              <img src="/images/this-is-your-list.jpg" alt="empty-list" className="rounded-2xl hover:scale-150 my-10 w-[400px] peer"/>
+              <img src="/images/this-is-your-list.jpg" alt="empty-list" className="rounded-2xl hover:scale-150 my-10 w-[400px] cursor-pointer peer"/>
               <h3 className="dark:text-white text-slate-700 font-semibold text-4xl  peer-hover:hidden">{`Please, let's do SOME WORK and ${openTasks ? 'ADD NEW' : 'CLOSE SOME'} Tasks!`}</h3>
             </div>
           </div>  
