@@ -25,7 +25,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             });
 
 
-            console.log( 'existing task', existingTask);
             if (!existingTask) {
                 throw new Error('Invalid ID');
             }
@@ -40,16 +39,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
             });
 
-
-
-            console.log( 'update all tasks', updateTask);
             
             return res.status(200).json(updateTask);
         }
 
     }catch(error){
-        console.log(error);
-        console.log("fodasse", req.body)
         return res.status(400).end();
     }
 }

@@ -16,7 +16,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             
             const { text, state } = req.body
 
-            console.log(text);
 
             const task = await prismadb.task.create({
                 data: {
@@ -25,7 +24,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
             });
 
-            console.log(task);
 
             const user = await prismadb.user.update({
                 where: {
@@ -43,8 +41,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
 
     }catch(error){
-        console.log(error);
-        console.log("fodasse", req.body)
         return res.status(400).end();
     }
 }

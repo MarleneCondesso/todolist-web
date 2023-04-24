@@ -4,8 +4,6 @@ import axios from 'axios';
 import { signIn } from 'next-auth/react';
 import { useRouter } from "next/router";
 
-import { FcGoogle } from 'react-icons/fc';
-import { FaGithub } from 'react-icons/fa';
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/Bs";
 import { MdDesktopWindows } from "react-icons/md";
 
@@ -47,7 +45,6 @@ const Auth = () => {
 
             router.push('/');
         } catch (error) {
-            console.log(error);
         }
     }, [email, password, router]);
 
@@ -55,7 +52,7 @@ const Auth = () => {
     const register = useCallback(async () => {
 
         const image = images[Math.floor(Math.random() * 5)];
-        console.log(image);
+
         try {
             await axios.post('/api/register', {
                 email,
@@ -67,7 +64,6 @@ const Auth = () => {
 
             login();
         } catch (error) {
-            console.log(error);
         }
     }, [email, name, password, login]);
 

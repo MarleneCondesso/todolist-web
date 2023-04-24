@@ -77,7 +77,6 @@ const NavbarMobile: FC<NavbarMobileProps> = ({
 
         let image = e.toString();
 
-        console.log(image);
         let response = await axios.put('/api/putImage', { image });
 
         mutate({

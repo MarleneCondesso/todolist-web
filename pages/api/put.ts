@@ -16,7 +16,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             
             const { taskId, state} = req.body
 
-            console.log(taskId, 'taskId');
 
 
             const existingTask = await prismadb.task.findUnique({
@@ -26,7 +25,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             });
 
 
-            console.log( 'existing task', existingTask);
             if (!existingTask) {
                 throw new Error('Invalid ID');
             }
@@ -40,17 +38,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     state: state
                 }
             });
-
-
-
-            console.log( 'update all tasks', updateTask);
             
             return res.status(200).json(updateTask);
         }
 
     }catch(error){
-        console.log(error);
-        console.log("fodasse", req.body)
         return res.status(400).end();
     }
 }
