@@ -42,7 +42,7 @@ const TaskList: FC<TaskListProps> = ({ data, openTasks }) => {
             </div>
           </div>  
           :
-        <div className=" lg:grid-cols-3  grid gap-10 h-90 w-full overflow-x-hidden p-4 items-center justify-center">
+        <div className=" 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid gap-5 h-90 w-full overflow-x-hidden p-4 items-center justify-center">
           {data?.map((task: any) => (
             <Item key={task.id} item={task}/>
           ))}
