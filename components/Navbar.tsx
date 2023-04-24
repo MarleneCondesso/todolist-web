@@ -142,7 +142,6 @@ const Navbar: FC<NavbarProps> = ({ onTheme }) => {
                     max-lg:top-5
                     max-lg:right-20
                     self-center
-                    max-h-28
                     p-2
                     dark:bg-teal-800
                     dark:bg-opacity-60
@@ -156,7 +155,7 @@ const Navbar: FC<NavbarProps> = ({ onTheme }) => {
                         <button onClick={() => { setTheme('dark'); onTheme('dark'); }}
                             className={`${theme === 'dark' ? 'text-teal-500' : 'text-white'} dark:hover:text-teal-500 hover:text-teal-900 cursor-pointer`}
                         >
-                            <HiMoon size={18} />
+                            <HiMoon size={20} />
                         </button>
                         <button onClick={() => { setTheme('system'); onTheme('system'); }}
                             className={`
@@ -166,7 +165,7 @@ const Navbar: FC<NavbarProps> = ({ onTheme }) => {
                             <MdDesktopWindows size={20} />
                         </button>
                         <div className="flex flex-row items-center gap-3 cursor-pointer transition duration-700" onClick={toggleMenuProfile}>
-                        <img src={currentUser?.image} className="w-16" alt="profile-image"/>
+                        <img src={currentUser?.image} className="w-10" alt="profile-image"/>
                         <IoIosArrowDown size={30} className={`${showMenuProfile && 'rotate-180'} ${theme === 'dark' ? 'text-teal-400' : 'text-slate-700'}`} />
                         </div>
                     </div>

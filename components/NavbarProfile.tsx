@@ -49,18 +49,18 @@ const NavbarProfile = () => {
 
     return (
         <>
-            <div className="bg-slate-500 w-60 absolute top-14 right-0 py-5 flex-col border-2 border-slate-700 flex rounded-lg">
+            <div className="bg-slate-400 dark:bg-slate-700 dark:bg-opacity-80 bg-opacity-60 w-60 absolute top-20 right-0 py-5 flex-col border-2 dark:border-teal-400 border-slate-300 flex rounded-lg">
                 <div className="flex flex-col gap-3">
                     <div className="px-3 group/item flex flex-col gap-3 items-center w-full">
                         <div className="w-full h-full">
                             <img className="rounded-md" src={currentUser?.image} alt="profile"/>
                         </div>
                         <input className="cursor-pointer block w-full mb-5 text-xs text-white border border-white rounded-lg bg-slate-700 dark:text-teal-400 focus:outline-none dark:bg-gray-700 dark:border-teal-400 dark:placeholder-teal-400 placeholder-slate-700" accept={"image/*"} id="small_size" onChange={onFileResize} type="file"/>
-                        <p className="text-white text-sm group-hover/item:underline">{currentUser?.name}</p>
+                        <p className="text-slate-700 dark:text-white text-sm group-hover/item:underline">{currentUser?.name}</p>
                     </div>
                 </div>
                 <hr className="bg-gray-600 border-0 h-px my-4" />
-                <div onClick={() => signOut()} className="px-3 text-center text-white text-sm hover:underline cursor-pointer">
+                <div onClick={() => signOut()} className="px-3 text-center text-slate-700 dark:text-white font-semibold text-sm hover:underline cursor-pointer">
                     Sign out of To Do List
                 </div>
             </div>
