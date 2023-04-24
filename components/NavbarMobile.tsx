@@ -3,8 +3,8 @@ import NavbarItem from "./NavbarItem";
 import { FC, useCallback, useEffect, useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { MdDesktopWindows } from "react-icons/md";
-import { BsFillSunFill } from "react-icons/Bs";
-import { BsFillMoonFill } from "react-icons/Bs";
+import {HiSun } from "react-icons/hi";
+import { HiMoon } from "react-icons/hi";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import axios from "axios";
 import { signOut } from "next-auth/react";
@@ -190,7 +190,7 @@ const NavbarMobile: FC<NavbarMobileProps> = ({
                                 cursor-pointer
                             `}
                         >
-                            <BsFillSunFill size={20} />
+                            <HiSun size={20} />
                         </button>
                         <button onClick={() => { setTheme('dark') }}
                             className={`
@@ -200,7 +200,7 @@ const NavbarMobile: FC<NavbarMobileProps> = ({
                                 cursor-pointer
                             `}
                         >
-                            <BsFillMoonFill size={18} />
+                            <HiMoon size={18} />
                         </button>
                         <button onClick={() => { setTheme('system') }}
                             className={`
