@@ -1,4 +1,4 @@
-import { IoClose } from "react-icons/Io5";
+import { CgClose } from "react-icons/cg";
 import NavbarItem from "./NavbarItem";
 import { FC, useCallback, useEffect, useState } from "react";
 import { FiMenu } from "react-icons/fi";
@@ -146,7 +146,7 @@ const NavbarMobile: FC<NavbarMobileProps> = ({
                         `}
                 >
 
-                    <IoClose size={36} className="cursor-pointer text-gray-600 dark:text-teal-400" onClick={toggleMobileMenu} />
+                    <CgClose size={36} className="cursor-pointer text-gray-600 dark:text-teal-400" onClick={toggleMobileMenu} />
 
                     <img src={currentUser?.image} className="w-16 self-center" alt="profile-image"/>
                     <h2 className="text-slate-700
