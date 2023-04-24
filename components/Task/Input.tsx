@@ -17,7 +17,7 @@ const Input: React.FC<InputProps> = ({
  }) => {
 
     return (
-        <div className="relative">
+        <div className="z-20">
             <input 
             id={id}
             value={value}
@@ -30,10 +30,10 @@ const Input: React.FC<InputProps> = ({
                 pb-1
                 w-96
                 text-md
-                text-white
-                bg-slate-700
+                text-slate-700
+                bg-slate-300
                 dark:text-teal-400
-                dark:bg-slate-500
+                dark:bg-slate-800
                 appearance-none
                 focus:outline-none
                 focus:ring-0
@@ -46,22 +46,23 @@ const Input: React.FC<InputProps> = ({
             />
             <label htmlFor={id} 
             className="
-            absolute
-            text-md
-            text-slate-300
-            dark:text-slate-700
-            duration-150
-            transform
-            -translate-y-3
-            scale-75
-            top-4
-            z-10
-            origin-[0]
-            left-6
-            peer-placeholder-shown:scale-100
-            peer-placeholder-shown:translate-y-0
-            peer-focus:scale-75
-            peer-focus:-translate-y-3">
+                absolute
+                text-md
+                text-slate-800
+                dark:text-teal-500
+                duration-150
+                transform
+                -translate-y-3
+                scale-75
+                top-4
+                z-10
+                origin-[0]
+                left-6
+                peer-placeholder-shown:scale-100
+                peer-placeholder-shown:translate-y-0
+                peer-focus:scale-75
+                peer-focus:-translate-y-3
+                ">
                 {label}
             </label>
         </div>

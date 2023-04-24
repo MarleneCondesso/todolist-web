@@ -4,7 +4,7 @@ import { NextPageContext } from "next";
 import { getSession, signOut } from "next-auth/react";
 import { useCallback, useEffect, useState } from "react";
 import register from "./api/register";
-import { TaskDTO, TaskService } from "@/services/TaskService";
+import { Task, TaskDTO, TaskService } from "@/services/TaskService";
 import TaskList from "@/components/Task/TaskList";
 import axios from "axios";
 import useCurrentUser from "@/hooks/useCurrentUser";
@@ -33,11 +33,14 @@ export default function Home() {
 
   const [input, setInput] = useState('');
 
-  // const [ tasksUsers, setTasksUser ] = useState<Task[]>([]);
+  //const [ tasksUsers, setTasksUser ] = useState<Task[]>([]);
 
 
-  const { data: taskList = [] } = useTask();
+  const { data: taskListOpen = [] } = useTask();
   const { data: taskListClosed = [] } = useTaskListClosed();
+
+  // const taskListOpen: Task[] = [{id: "1",text: '', state: false}];
+  // const taskListClosed: Task[] = [{id: "2", text: '', state: true}];
 
   const { mutate: mutateTasks } = useTask();
   const { data: currentUser, mutate } = useCurrentUser();
@@ -46,11 +49,12 @@ export default function Home() {
   const [showTaskListClosed, setShowTaskListClosed] = useState(false);
 
   const addNewTask = useCallback(async () => {
-
+    if(!input)return alert('The field is empty!')
+    
     let state = false;
     let text = input;
-    let response = await axios.post('/api/post', { text, state });
-    console.log(response);
+    setInput('');
+    let response = await axios.post('/api/post', { text, state });;
     const updateTaskIds = response?.data?.taskIds;
 
     mutate({
@@ -70,56 +74,91 @@ export default function Home() {
   return (
     <>
       <div className='
-      p-10
-      h-full 
-      w-full 
-      flex 
-      items-center 
-      justify-center 
+      w-full  
       flex-col
-      gap-5'
+      gap-5 
+      justify-between'
       >
-        <Navbar />
+        <Navbar onTheme={()=>{}}/>
         <div className="
         flex 
-        flex-row 
+        lg:flex-row
+        flex-col 
         w-full 
         justify-center 
         gap-10 
-        bg-slate-700 
         bg-opacity-90  
         items-center 
-        rounded-md
-        h-60">
+        rounded-b-md
+        h-32
+        mt-16">
           <button onClick={toggleVariant} className="
-            bg-slate-700 
-            w-20
-            h-10 
-            rounded-lg 
-            text-white 
+            bg-slate-300
+            w-24
+            h-14 
+            rounded-full 
+            font-semibold
+            text-slate-700 
             dark:bg-slate-600 
             dark:text-teal-500
-            hover:text-slate-700
+            hover:text-white
             hover:bg-slate-400
             dark:hover:bg-teal-400
-            dark:hover:text-white"
+            dark:hover:text-white
+            z-10"
           >{showTaskListClosed ? 'TO DO' : 'CLOSED'}</button>
-          <Input id="task" label="Insert your task" onChange={(ev: any) => { setInput(ev.target.value) }} value={input} type="text" />
+          {!showTaskListClosed ?
+          <>
+          <div className="flex flex-row gap-20 items-center justify-center"> 
+          <input 
+            id={"task"}
+            value={input}
+            type="text"
+            onChange={(ev: any) => { setInput(ev.target.value) }} 
+            className="
+                block
+                rounded-md
+                pb-1
+                w-96
+                h-14
+                p-2
+                text-md
+                text-slate-700
+                bg-slate-300
+                dark:text-teal-400
+                dark:bg-slate-800
+                appearance-none
+                focus:outline-none
+                focus:ring-0
+                focus:bg-slate-400
+                dark:focus:bg-slate-600
+                dark:focus:bg-opacity-80
+                peer    
+            "
+            placeholder="Insert your task"
+            />
+          </div>
           <button onClick={addNewTask} className="
-          bg-slate-700 
+          bg-slate-300
           w-20 
           h-10
-          rounded-lg 
-          text-white 
+          rounded-full
+          font-semibold
+          text-slate-700 
           dark:bg-slate-600 
           dark:text-teal-500
-          hover:text-slate-700
+          hover:text-white
           hover:bg-slate-400
           dark:hover:bg-teal-400
           dark:hover:text-white
+          z-10
           ">ADD</button>
+          </>
+          :
+            null
+          }
         </div>
-        <TaskList data={showTaskListClosed ? taskListClosed : taskList} />
+        <TaskList data={showTaskListClosed ? taskListClosed : taskListOpen} openTasks={!showTaskListClosed}/>
       </div>
     </>
   )

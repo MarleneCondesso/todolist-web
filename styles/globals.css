@@ -5,7 +5,7 @@
 
 
 body{
-    @apply dark:bg-slate-700 bg-white h-full overflow-x-hidden dark:scrollbar-track-teal-500 dark:scrollbar-thumb-slate-600 scrollbar-thumb-rounded-lg scrollbar-thin scrollbar-track-slate-700 scrollbar-thumb-gray-500;
+    @apply dark:bg-slate-700 bg-white h-full overflow-x-hidden dark:scrollbar-track-teal-500 dark:scrollbar-thumb-slate-600 scrollbar-thumb-rounded-lg scrollbar-thin scrollbar-track-[#DDD0C8] scrollbar-thumb-gray-500;
 }
 
 #__next{

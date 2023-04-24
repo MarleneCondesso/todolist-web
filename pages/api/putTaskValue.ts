@@ -12,11 +12,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         if(req.method === 'PUT'){
 
-                      
             
-            const { taskId, state} = req.body
-
-            console.log(taskId, 'taskId');
+            
+            
+            const { taskId, text } = req.body
 
 
             const existingTask = await prismadb.task.findUnique({
@@ -37,7 +36,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     id: taskId,
                 },
                 data: {
-                    state: state
+                    text: text
                 }
             });
 

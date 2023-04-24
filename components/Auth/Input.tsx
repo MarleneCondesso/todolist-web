@@ -30,11 +30,13 @@ const Input: React.FC<InputProps> = ({
                 pb-1
                 w-full
                 text-md
-                text-white
-                bg-slate-700
+                text-slate-700
+                bg-slate-300
                 dark:text-teal-400
-                dark:bg-slate-500
+                dark:bg-slate-800
                 appearance-none
+                focus:bg-slate-500
+                dark:focus:bg-slate-700
                 focus:outline-none
                 focus:ring-0
                 peer    
@@ -45,8 +47,8 @@ const Input: React.FC<InputProps> = ({
             className="
             absolute
             text-md
-            text-slate-300
-            dark:text-slate-700
+            text-slate-800
+            dark:text-teal-500
             duration-150
             transform
             -translate-y-3
