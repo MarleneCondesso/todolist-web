@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import {HiSun } from "react-icons/hi";
 import { HiMoon } from "react-icons/hi";
 import { MdDesktopWindows } from "react-icons/md";
-
+import { faker } from '@faker-js/faker';
 const images = [
     '/images/profile-user-cat.png',
     '/images/profile-user-cat2.jpg',
@@ -14,6 +14,8 @@ const images = [
     '/images/profile-user-mr.jpg',
     '/images/profile-user-sapo.png',
   ]
+
+  //export const generateFakerAvatar = () => faker.image.avatar();
 
 const Auth = () => {
 
@@ -51,7 +53,8 @@ const Auth = () => {
 
     const register = useCallback(async () => {
 
-        const image = images[Math.floor(Math.random() * 5)];
+        //const image = images[Math.floor(Math.random() * 5)];
+        const image = faker.image.avatar();
 
         try {
             await axios.post('/api/register', {

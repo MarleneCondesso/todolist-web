@@ -148,7 +148,7 @@ const NavbarMobile: FC<NavbarMobileProps> = ({
 
                     <CgClose size={36} className="cursor-pointer text-gray-600 dark:text-teal-400" onClick={toggleMobileMenu} />
 
-                    <img src={currentUser?.image} className="w-16 self-center" alt="profile-image"/>
+                    <img src={currentUser?.image} className="w-16 self-center rounded-full" alt="profile-image"/>
                     <h2 className="text-slate-700
                         dark:lg:text-teal-200
                         dark:text-white

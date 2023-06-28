@@ -165,7 +165,7 @@ const Navbar: FC<NavbarProps> = ({ onTheme }) => {
                             <MdDesktopWindows size={20} />
                         </button>
                         <div className="flex flex-row items-center gap-3 cursor-pointer transition duration-700" onClick={toggleMenuProfile}>
-                        <img src={currentUser?.image} className="w-10" alt="profile-image"/>
+                        <img src={currentUser?.image} className="w-10 rounded-full" alt="profile-image"/>
                         <IoIosArrowDown size={30} className={`${showMenuProfile && 'rotate-180'} ${theme === 'dark' ? 'text-teal-400' : 'text-slate-700'}`} />
                         </div>
                     </div>
