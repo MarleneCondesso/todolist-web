@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+
+import { TbEyeglass, TbEyeglassOff } from 'react-icons/tb';
+
 
 interface InputProps{
     id: string;
@@ -6,6 +9,7 @@ interface InputProps{
     value: string;
     label: string;
     type?: string;
+    setShowPassword?: (res: any) => void;
 }
 
 const Input: React.FC<InputProps> = ({ 
@@ -13,8 +17,21 @@ const Input: React.FC<InputProps> = ({
     onChange,
     value,
     label,
-    type
+    type, 
+    setShowPassword
  }) => {
+
+    const [toggleShowPassword, setToggleShowPassword] = React.useState(false);
+    
+    const toggleVariant = useCallback(() => {
+        debugger
+        setToggleShowPassword((current) => {
+            setShowPassword!(!current);
+            return !current
+        });
+       
+    }, []);
+
 
     return (
         <div className="relative">
@@ -36,6 +53,7 @@ const Input: React.FC<InputProps> = ({
                 dark:bg-slate-800
                 appearance-none
                 focus:bg-slate-500
+                focus:text-slate-200
                 dark:focus:bg-slate-700
                 focus:outline-none
                 focus:ring-0
@@ -43,6 +61,34 @@ const Input: React.FC<InputProps> = ({
             "
             placeholder=" "
             />
+        
+            {id === 'password' && 
+                !toggleShowPassword ?
+                <TbEyeglass size={24} onClick={toggleVariant} className='absolute
+                text-md
+                text-slate-800
+                dark:text-teal-500
+                duration-150
+                scale-75
+                top-4
+                z-10
+                origin-[0]
+                right-6
+                cursor-pointer'/> 
+            :
+            id === 'password' && toggleShowPassword && 
+                <TbEyeglassOff size={24} onClick={toggleVariant} className='absolute
+                    text-md
+                    text-slate-800
+                    dark:text-teal-500
+                    duration-150
+                    scale-75
+                    top-4
+                    z-10
+                    origin-[0]
+                    right-6
+                    cursor-pointer'/> 
+            }
             <label htmlFor={id} 
             className="
             absolute

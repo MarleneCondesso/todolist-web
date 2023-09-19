@@ -85,7 +85,7 @@ export default function Home() {
         mt-16">
           <button onClick={toggleVariant} className="
             bg-slate-300
-            w-24
+            w-32
             h-14 
             rounded-full 
             font-semibold
@@ -96,8 +96,9 @@ export default function Home() {
             hover:bg-slate-400
             dark:hover:bg-teal-400
             dark:hover:text-white
+            
             z-10"
-          >{showTaskListClosed ? 'TO DO' : 'CLOSED'}</button>
+          >{showTaskListClosed ? 'TO DO LIST' : 'CLOSED TASKS'}</button>
           {!showTaskListClosed ?
           <>
           <div className="flex flex-row gap-20 items-center justify-center"> 
@@ -131,7 +132,7 @@ export default function Home() {
           </div>
           <button onClick={addNewTask} className="
           bg-slate-300
-          w-20 
+          w-24 
           h-10
           rounded-full
           font-semibold
@@ -142,8 +143,7 @@ export default function Home() {
           hover:bg-slate-400
           dark:hover:bg-teal-400
           dark:hover:text-white
-          z-10
-          ">ADD</button>
+          ">ADD TASK</button>
           </>
           :
             null

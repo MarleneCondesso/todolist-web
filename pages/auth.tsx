@@ -3,19 +3,25 @@ import { useCallback, useEffect, useState } from "react";
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
 import { useRouter } from "next/router";
-import {HiSun } from "react-icons/hi";
+import { HiSun } from "react-icons/hi";
 import { HiMoon } from "react-icons/hi";
 import { MdDesktopWindows } from "react-icons/md";
 import { faker } from '@faker-js/faker';
+import Alert from '@material-ui/lab/Alert';
+import AlertTitle from '@material-ui/lab/AlertTitle';
+import { getMaxListeners } from "process";
+import { HtmlContext } from "next/dist/shared/lib/html-context";
+
+
 const images = [
     '/images/profile-user-cat.png',
     '/images/profile-user-cat2.jpg',
     '/images/profile-user-meme.png',
     '/images/profile-user-mr.jpg',
     '/images/profile-user-sapo.png',
-  ]
+]
 
-  //export const generateFakerAvatar = () => faker.image.avatar();
+//export const generateFakerAvatar = () => faker.image.avatar();
 
 const Auth = () => {
 
@@ -28,23 +34,33 @@ const Auth = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
 
+    const [response, setResponse] = useState(true);
+    const [responseMessage, setResponseMessage] = useState("");
+    const [emailWithoutRequirements, setEmailWithoutRequirements] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
     const [variant, setVariant] = useState('login');
 
     const toggleVariant = useCallback(() => {
         setVariant((current) => current == 'login' ? 'register' : 'login');
+        setResponse(true);
+        setResponseMessage('');
     }, []);
 
     const login = useCallback(async () => {
 
+        if (!verificationValues('login')) return
         try {
 
-            await signIn('credentials', {
+            const responsedb = await signIn('credentials', {
                 email,
                 password,
                 redirect: false,
                 callbackUrl: '/'
-            })
+            });
 
+            setResponse(responsedb?.ok ?? true);
+            setResponseMessage(responsedb?.error ?? "Something gone wrong!");
             router.push('/');
         } catch (error) {
         }
@@ -56,19 +72,76 @@ const Auth = () => {
         //const image = images[Math.floor(Math.random() * 5)];
         const image = faker.image.avatar();
 
+        if (!verificationValues('register')) return
+        setEmailWithoutRequirements(false);
         try {
-            await axios.post('/api/register', {
+            const responsedb = await axios.post('/api/register', {
                 email,
                 name,
                 password,
                 image,
             });
-
+            console.log(responsedb || 'this is supost to have something from the db')
+            setResponseMessage("Please, complete all the fields empty's");
 
             login();
         } catch (error) {
         }
     }, [email, name, password, login]);
+
+
+    const verificationValues = (type: string) => {
+        setEmailWithoutRequirements(false);
+        
+        const regex = new RegExp('^(?=.*[A-Z])(?=.*[-!@#~|.,$&_?*])(?=.*[0-9].*[0-9])(?=.*[a-z]).{8,}$');
+       
+        if (type === 'login') {
+            if (email === '' || password === '') {
+                setResponse(false);
+                setResponseMessage("Please, complete all the fields empty's");
+                return false;
+            }
+        } else {
+            if (email === '' || name === '' || password === '') {
+                setResponse(false);
+                setResponseMessage("Please, complete all the fields empty's");
+                return false;
+            }
+            debugger
+
+
+            if (name.length < 3) {
+                setResponse(false);
+                setResponseMessage("Please, add some letter to your name, it's kinda shorty!");
+                return false;
+            }
+
+            if (password.length < 8) {
+                setResponse(false);
+                setResponseMessage("Please, add some characters to your password, it's kinda shorty!");
+                return false;
+            } else if (!password.match(regex)) {
+                setResponse(false);
+                setResponseMessage('');
+                setEmailWithoutRequirements(true);
+
+                return false;
+            }
+        }
+
+        if (!(email.includes('@hotmail.pt') || email.includes('@gmail.pt'))) {
+
+            if (!(email.includes('@hotmail.com') || email.includes('@gmail.com'))) {
+                setResponse(false);
+                setResponseMessage("Please, insert your email correctly. Apparently, you miss something!");
+                return false;
+            }
+            setResponse(true);
+            setResponseMessage('');
+        }
+
+        return true;
+    }
 
     const onWindowMatch = () => {
         if (typeof window !== 'undefined') {
@@ -179,9 +252,31 @@ const Auth = () => {
                                 label="Password"
                                 onChange={(ev: any) => { setPassword(ev.target.value) }}
                                 id="password"
-                                type="password"
-                                value={password} />
+                                type={showPassword ? '' : 'password'}
+                                value={password} 
+                                setShowPassword={(res: boolean) => setShowPassword(res)}/>
                         </div>
+
+                        {!response ? <Alert severity="error" className="mt-3">
+                            <AlertTitle>Error</AlertTitle>
+                            {variant === 'register' && emailWithoutRequirements &&
+                                <div>
+                                    <strong>
+                                        Your password needs to corresponds to:
+
+                                    </strong>
+                                    <ul className="pl-10 pt-2 text-sm">
+                                        <li className="list-disc">Letters in Upper Case (Min. 1)</li>
+                                        <li className="list-disc">Letters in Lower Case (Min. 1)</li>
+                                        <li className="list-disc">Numerals (0-9) (Min. 1)</li>
+                                        <li className="list-disc">8 characters length</li>
+                                        <li className="list-disc">Special Character (!|@#~.,$&?*_-, Min. 1)</li>
+                                    </ul>
+                                </div>
+                            }
+                            {responseMessage}
+                        </Alert> : null}
+
                         <button onClick={variant == 'login' ? login : register} className="
                         bg-slate-400
                         py-3

@@ -160,7 +160,7 @@ const Item: FC<ItemProps> = ({
                     <p>{createdAt}</p>
                     <p>{createdTime}</p>
                 </div>
-                <p className='font-semibold text-base dark:text-teal-400 text-white'>Updated At: </p>
+                <p className='font-semibold text-base dark:text-teal-400 text-white'>Closed At: </p>
                 <div className="dark:text-white text-slate-700 flex flex-row gap-5">
                     <p>{updateAt}</p>
                     <p>{updateTime}</p>
