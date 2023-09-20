@@ -7,8 +7,8 @@ import { HiSun } from "react-icons/hi";
 import { HiMoon } from "react-icons/hi";
 import { MdDesktopWindows } from "react-icons/md";
 import { faker } from '@faker-js/faker';
-import Alert from '@material-ui/lab/Alert';
-import AlertTitle from '@material-ui/lab/AlertTitle';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 import { getMaxListeners } from "process";
 import { HtmlContext } from "next/dist/shared/lib/html-context";
 
